@@ -7,9 +7,9 @@ public class TheRates {
 	private double first_z_pai = 1;
 	private double sum_z_pai = 0;
 
-	private double[] data_z_R; // 本期本息率 = 1 + 年率 /360* 本期天数
-	private double[] data_z_pai; // <本息率>连乘积
-	private double data_z_R_per; // 期利率
+	private double [] data_z_R; // 当前期的本息率 = 1 + 年率 /360* 本期天数
+	private double [] data_z_pai; // <当前期的息率>连乘积
+	private double data_z_R_per; // 按整期的利率
 	// private $data_z_ByDay; // 实际是按天算利息
 
 	
