@@ -27,16 +27,21 @@ public class TheRates {
 
 		data_z_R_day = new double[num+2];
 		data_z_PI_day = new double[num+2];
+		data_z_PI_per = new double[num+2];
 
 		d3_total_Period = num;
 
 		first_z_PI_day = 1;
 		sum_z_PI_day = 0;
+		first_z_PI_per = 1;
+		sum_z_PI_per = 0;
+		
 		data_z_R_per = 0;
 
 		for (int i = 0; i <= d3_total_Period + 1; i++) {
 			data_z_R_day[i] = 0;
 			data_z_PI_day[i] = 1;
+			data_z_PI_per[i] = 1;
 			// $this->data_z_ByDay[$i] = false;
 		}
 
@@ -55,6 +60,7 @@ public class TheRates {
 		 */
 		data_z_R_day = null;
 		data_z_PI_day = null;
+		data_z_PI_per = null;
 		// $this->data_z_ByDay = null;
 	}
 
@@ -66,8 +72,12 @@ public class TheRates {
 		if (len == 0) {
 			data_z_R_per = 15 * real_day_rate;
 		}
-		if (len < 0) {
+		if (len < 0 & len > -25 ) {
 			data_z_R_per = 30 * (-len) * real_day_rate;
+		}
+		
+		if (len <= -25 ) {
+			data_z_R_per = 0;
 		}
 	}
 
@@ -149,7 +159,7 @@ public class TheRates {
 	}
 
 	private void fix_z_R(int x, double real_day_rate, int days, int len) {// = false)
-		fix_z_R(x, real_day_rate, days, len, false);
+	//	fix_z_R(x, real_day_rate, days, len, false);
 	}
 
 	private void fix_z_R(int x, double real_day_rate, int days, int len, boolean useSelfDay)// = false)
@@ -176,17 +186,17 @@ public class TheRates {
 	}
 
 	
-	private void cal_PerRate() { // 算月还,是按期,还是按天
+	private void cal_Rate_PI() { // 算月还,是按期,还是按天
 
 		int num = getCount();
 
 		double mult_pai=1; // 从 2 到 第 25 个 z_pai 求和
 		
+		
+		
+
+
 		sum_z_PI_day = 0;
-		sum_z_PI_per = 0;
-
-
-
 		for (int x = num; x >= 1; x--) {
 			mult_pai = get_z_PI_day(x + 1);
 			set_z_PI_day(x, mult_pai);
@@ -205,7 +215,8 @@ public class TheRates {
 				mult_pai = (get_z_R_per() + 1) * mult_pai;
 			}
 			first_z_pai = mult_pai; // 第1 个 z_pai
-*/			
+*/		
+		sum_z_PI_per = 0;
 		for (int x = num; x >= 1; x--) {
 			mult_pai = get_z_PI_per(x + 1);
 			set_z_PI_per(x, mult_pai);
@@ -216,7 +227,7 @@ public class TheRates {
 
 	}
 
-	public double cal_Period_Amount(long total,  boolean useSelfDay) {
+	public double cal_Average_Amount(long total,  boolean useSelfDay) {
 		double amt=0;
 		if ( useSelfDay ) { // 按天
 			amt = total * first_z_PI_day / sum_z_PI_day; // 求精确月供
@@ -271,11 +282,13 @@ public class TheRates {
 		{
 			int days = theDates.getDueDays( x );
 			
-			fix_z_R( x, real_day_rate,days, len,useDay ); // $this->d2_real_day_rate, false 按期，true 按天
-		}
-		
+			// fix_z_R( x, real_day_rate,days, len,useDay ); // $this->d2_real_day_rate, false 按期，true 按天
+			
+			set_z_R_day(x, days * real_day_rate); 
+		}		
 		set_z_R_per( real_day_rate, len );
-		cal_PerRate();
+		
+		cal_Rate_PI();
 
 
 		

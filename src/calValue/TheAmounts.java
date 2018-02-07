@@ -11,12 +11,12 @@ public class TheAmounts {
 	private int d3_total_Period = 6;
 
 
-	private double d6_period_amount = 0.0;
-	private long d6_period_amount_round = 0;
+	private double d6_Average_Amount = 0.0;
+	private long d6_Average_Amount_round = 0;
 
-	private long [] d_Amounts;
-	private long [] d_DueAmounts;
-	private long [] d_DueInterests;
+	private long [] d_Principal;
+	private long [] d_DuePrincipal;
+	private long [] d_DueInterest;
 
 
 	
@@ -35,17 +35,17 @@ public class TheAmounts {
 	{
 		//        $this->data_start_date = date_create();
 
-		d_Amounts = new long[num+2];
-		d_DueAmounts = new long[num+2];
-		d_DueInterests = new long[num+2];
+		d_Principal = new long[num+2];
+		d_DuePrincipal = new long[num+2];
+		d_DueInterest = new long[num+2];
 
 		d3_total_Period = num;
 
 
 		for (int i=0 ; i<=num+1;i++){
-			d_Amounts[i] = 0;
-			d_DueAmounts[i] = 0;
-			d_DueInterests[i] = 0;
+			d_Principal[i] = 0;
+			d_DuePrincipal[i] = 0;
+			d_DueInterest[i] = 0;
 			//            $this->data_z_ByDay[$i] = false;
 		}
 
@@ -69,9 +69,9 @@ public class TheAmounts {
             // unset($this->data_z_ByDay[$i]);
         }
 		 */
-		d_Amounts = null;
-		d_DueAmounts = null;
-		d_DueInterests = null;
+		d_Principal = null;
+		d_DuePrincipal = null;
+		d_DueInterest = null;
 		// $this->data_z_ByDay = null;
 	}
 
@@ -101,12 +101,12 @@ public class TheAmounts {
 
 		long amt;
 
-		d_Amounts[0] = d1_all_loan;
-		d_DueAmounts[0] = 0;
+		d_Principal[0] = d1_all_loan;
+		d_DuePrincipal[0] = 0;
 
 
-		d6_period_amount = theRates.cal_Period_Amount( d1_all_loan );
-		d6_period_amount_round = ( long ) com.wj.fin.wjutil.TheTools.round_half_up(d6_period_amount, 0);
+		d6_Average_Amount = theRates.cal_Average_Amount( d1_all_loan,useDay );
+		d6_Average_Amount_round = ( long ) com.wj.fin.wjutil.TheTools.round_half_up(d6_Average_Amount, 0);
 		//;   round( $this->d6_period_amount, 2, PHP_ROUND_HALF_UP ); // 求四舍五入到分月供
 
 
@@ -114,19 +114,19 @@ public class TheAmounts {
 
 
 		for ( int x=1; x <= num; x++) {
-			amt = d_Amounts[x-1]-d_DueAmounts[x-1];
-			d_Amounts[x] =  amt;
-			d_DueInterests[x] = theRates.cal_Period_Interest(x, amt,useDay );
-			d_DueAmounts[x] = d6_period_amount_round - d_DueInterests[x];
+			amt = d_Principal[x-1]-d_DuePrincipal[x-1];
+			d_Principal[x] =  amt;
+			d_DueInterest[x] = theRates.cal_Period_Interest(x, amt,useDay );
+			d_DuePrincipal[x] = d6_Average_Amount_round - d_DueInterest[x];
 		}
 
 		cal_last_period_due_principal();
 
-		amt = d_Amounts[1];
-		d_DueInterests[1] = theRates.cal_Period_Interest(1, amt,true );
+		amt = d_Principal[1];
+		d_DueInterest[1] = theRates.cal_Period_Interest(1, amt,true );
 
-		amt = d_Amounts[  num ];
-		d_DueInterests[ num ] = theRates.cal_Period_Interest( num , amt,true );
+		amt = d_Principal[  num ];
+		d_DueInterest[ num ] = theRates.cal_Period_Interest( num , amt,true );
 
 	}
 
@@ -134,9 +134,9 @@ public class TheAmounts {
 	private void cal_last_period_due_principal()
 	{ // 修正最后一期应还本金，如果没还完本金，全部归还。
 		int num = getCount();
-		if ( d_DueAmounts[num] != d_Amounts[num] )
+		if ( d_DuePrincipal[num] != d_Principal[num] )
 		{
-			d_DueAmounts[num] = d_Amounts[num];
+			d_DuePrincipal[num] = d_Principal[num];
 		}
 		//    $this->data_due_amount = $this->data_due_principal + $this->data_due_interest;
 	}
@@ -154,10 +154,10 @@ public class TheAmounts {
 
                 echoStr =echoStr+"        <td>"+x+"</td>\n";
                 //            $echoStr = $echoStr."        <td>".date_format($this->data_start_date,"Y-m-d")."</td>\n";
-                echoStr = echoStr+"        <td>"+d_Amounts[x]/100.0+"</td>\n";
-                echoStr = echoStr+"        <td>"+d_DueAmounts[x]/100.0+"</td>\n";
-                echoStr = echoStr+"        <td>"+d_DueInterests[x]/100.0+"</td>\n";
-                echoStr = echoStr+"        <td>"+(d_DueAmounts[x]+d_DueInterests[x])/100.0+"</td>\n";
+                echoStr = echoStr+"        <td>"+d_Principal[x]/100.0+"</td>\n";
+                echoStr = echoStr+"        <td>"+d_DuePrincipal[x]/100.0+"</td>\n";
+                echoStr = echoStr+"        <td>"+d_DueInterest[x]/100.0+"</td>\n";
+                echoStr = echoStr+"        <td>"+(d_DuePrincipal[x]+d_DueInterest[x])/100.0+"</td>\n";
 
                 echoStr = echoStr+"\n";
 
