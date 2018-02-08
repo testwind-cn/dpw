@@ -1,46 +1,57 @@
 package calValue;
 
-public class TheAmounts {
+public class ThePayments {
 
 	// 1-1098按设置固定天（ 多期、一期），
 	// 0按半月，-1按月，-2双月，-3三月，-4四月，-5五月，-6六月、-7七月、-8八月、-9九月、-10十月、-11十月、-12一年、（ 多期、一期）
 	// -13 .. -24两年，（ 多期、一期）
 	// -25按指定天,（ 多期、一期）
 
-	private long d1_all_loan = 12000;
-	private int d3_total_Period = 6;
+	private long d1_all_loan = 0;
+	private int d3_total_Period = 0;
 
 
-	private double d6_Average_Amount = 0.0;
-	private long d6_Average_Amount_round = 0;
+	private double d6_Fixed_Payment = 0.0;
+	private long d6_Fixed_Payment_Round = 0;
 
 	private long [] d_Principal;
 	private long [] d_DuePrincipal;
 	private long [] d_DueInterest;
+	
+	
+	public final static int ROUND_UP =           0;
+	public final static int ROUND_DOWN =         1;
+	public final static int ROUND_CEILING =      2;
+	public final static int ROUND_FLOOR =        3;
+	public final static int ROUND_HALF_UP =      4;
+	public final static int ROUND_HALF_DOWN =    5;
+	public final static int ROUND_HALF_EVEN =    6;
+	
+	private int d_pmt_roundingMode = ROUND_HALF_UP;
+	private int d_I_roundingMode = ROUND_HALF_UP;
 
 
 	
-	public TheAmounts(int num)
+	public ThePayments(int num)
     {
     	initMe(num);
     }
 	
-	public int getCount()
-	{ // ???
-		return d3_total_Period;
-	}
 
 
-	public void initMe(int num)
+	private void initMe(int num)
 	{
 		//        $this->data_start_date = date_create();
+		
+		if (num <= 0) {
+			d3_total_Period = 0;
+			return;			
+		}
+		d3_total_Period = num;
 
 		d_Principal = new long[num+2];
 		d_DuePrincipal = new long[num+2];
 		d_DueInterest = new long[num+2];
-
-		d3_total_Period = num;
-
 
 		for (int i=0 ; i<=num+1;i++){
 			d_Principal[i] = 0;
@@ -75,8 +86,115 @@ public class TheAmounts {
 		// $this->data_z_ByDay = null;
 	}
 
+	
+	public int getCount()
+	{ // ???
+		return d3_total_Period;
+	}
+	
+	public void setCount(int num)
+	{ // ???
+		if ( num != d3_total_Period ) {
+			releaseMe();
+			initMe(num);
+		}
+	}
 
-	public void  cal_theAmounts( TheRates theRates, double all_loan , boolean useDay )
+	
+	public void setRoundingMode( int f_pmt_mode, int interest_mode ) {
+		d_pmt_roundingMode = f_pmt_mode;
+		d_I_roundingMode = interest_mode;
+	}
+	public long set_Fixed_Payment( double f_pmt) {
+		d6_Fixed_Payment = f_pmt;
+		d6_Fixed_Payment_Round = ( long ) com.wj.fin.wjutil.TheTools.round_mode( f_pmt, 0, d_pmt_roundingMode );
+		return d6_Fixed_Payment_Round;
+	}
+	
+	public long get_Fixed_Payment() {
+		return d6_Fixed_Payment_Round;
+	}
+	
+	
+	
+	public void setAllPrincipal( long Principal) {
+		d1_all_loan = Principal;				
+//				( long ) com.wj.fin.wjutil.TheTools.round_half_up( all_loan*100, 0 );
+	}
+	
+	public void setPrincipal(int num, long Principal) {
+		if ( num <0 || num > getCount() ) return;
+		d_Principal[num] = Principal;
+	}
+	
+	public void setDuePrincipal(int num, long duePrincipal) {
+		if ( num <0 || num > getCount() ) return;
+		d_DuePrincipal[num] = duePrincipal;
+	}
+	
+	public void setDueInterest(int num, double DueInterest) {
+		if ( num <0 || num > getCount() ) return;
+		d_DueInterest[num] = ( long ) com.wj.fin.wjutil.TheTools.round_mode( DueInterest, 0, d_I_roundingMode );
+	}
+	
+	public long getAllPrincipal() {
+		return d1_all_loan;				
+	}
+	
+	public long getPrincipal(int num) {
+		if ( num <0 || num > getCount() ) return 0;
+		return d_Principal[num];
+	}
+	
+	public long getDuePrincipal(int num) {
+		if ( num <0 || num > getCount() ) return 0;
+		return d_DuePrincipal[num];
+	}
+	
+	public long getDueInterest(int num) {
+		if ( num <0 || num > getCount() ) return 0;
+		return d_DueInterest[num];
+	}
+	
+	public long [] getPrincipals() {
+		int num = getCount();
+		if ( num <= 0 ) return null;
+		
+		long [] a_array = new long[num];
+		for (int i=0;i<num;i++) {
+			a_array[i] = d_Principal[i+1];
+		}
+		return a_array;
+	}
+	
+	public long [] getDuePrincipals() {
+		int num = getCount();
+		if ( num <= 0 ) return null;
+		
+		long [] a_array = new long[num];
+		for (int i=0;i<num;i++) {
+			a_array[i] = d_DuePrincipal[i+1];
+		}
+		return a_array;
+	}
+	
+	public long [] getDueInterests() {
+		int num = getCount();
+		if ( num <= 0 ) return null;
+		
+		long [] a_array = new long[num];
+		for (int i=0;i<num;i++) {
+			a_array[i] = d_DueInterest[i+1];
+		}
+		return a_array;
+	}
+	
+	
+	
+	
+/*	
+
+	public void  cal_thePayments( TheRates theRates, double all_loan , boolean useDay )
 	{
 
 		if ( theRates == null)  {
@@ -105,8 +223,8 @@ public class TheAmounts {
 		d_DuePrincipal[0] = 0;
 
 
-		d6_Average_Amount = theRates.cal_Average_Amount( d1_all_loan,useDay );
-		d6_Average_Amount_round = ( long ) com.wj.fin.wjutil.TheTools.round_half_up(d6_Average_Amount, 0);
+		d6_Fixed_Payment = theRates.cal_Average_Payment( d1_all_loan,useDay );
+		d6_Fixed_Payment_Round = ( long ) com.wj.fin.wjutil.TheTools.round_half_up(d6_Fixed_Payment, 0);
 		//;   round( $this->d6_period_amount, 2, PHP_ROUND_HALF_UP ); // 求四舍五入到分月供
 
 
@@ -117,7 +235,7 @@ public class TheAmounts {
 			amt = d_Principal[x-1]-d_DuePrincipal[x-1];
 			d_Principal[x] =  amt;
 			d_DueInterest[x] = theRates.cal_Period_Interest(x, amt,useDay );
-			d_DuePrincipal[x] = d6_Average_Amount_round - d_DueInterest[x];
+			d_DuePrincipal[x] = d6_Fixed_Payment_Round - d_DueInterest[x];
 		}
 
 		cal_last_period_due_principal();
@@ -140,7 +258,7 @@ public class TheAmounts {
 		}
 		//    $this->data_due_amount = $this->data_due_principal + $this->data_due_interest;
 	}
-
+*/
 	public String echoData( boolean need_table ) //=true )
 	{
 		String echoStr = null;

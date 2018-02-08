@@ -15,6 +15,8 @@ public class TheDates {
     private int [] data_due_days;                         // 本期借款天数
     private int [] period_days_array;
     
+    private boolean data_is_HeadRear_Period = false; // 这是通过日期比对,看实际头尾是否是正月,是就 true, 不是就 false
+    
     
     
     public TheDates(int num)
@@ -109,7 +111,9 @@ public class TheDates {
     }
     
     
-    
+    public boolean is_HeadRear_Period() {
+    	return data_is_HeadRear_Period;
+    }
     
     private Calendar getShiftSameDay( Calendar start_date) // shift 前后挪期， $is_month=false半月，true月
     {    	

@@ -227,7 +227,7 @@ public class TheRates {
 
 	}
 
-	public double cal_Average_Amount(long total,  boolean useSelfDay) {
+	public double cal_Average_Payment(long total,  boolean useSelfDay) {
 		double amt=0;
 		if ( useSelfDay ) { // 按天
 			amt = total * first_z_PI_day / sum_z_PI_day; // 求精确月供

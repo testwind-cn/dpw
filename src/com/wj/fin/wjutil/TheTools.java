@@ -48,6 +48,14 @@ public class TheTools {
 		return new_round;
 	}
 	
+	public static double round_mode(double data, int digit,int mode) {
+		BigDecimal bg = new BigDecimal(data);
+		if ( mode < 1 || mode > 7 )
+			mode = BigDecimal.ROUND_HALF_UP;
+        double new_round = bg.setScale(digit, mode).doubleValue();
+		return new_round;
+	}
+	
 	public static int date_diff(java.util.Calendar cal1, java.util.Calendar cal2) {
 		
 		if ( cal1 == null || cal2 == null )

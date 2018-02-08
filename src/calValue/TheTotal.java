@@ -47,10 +47,16 @@ public class TheTotal {
       theRates.cal_theRates( theDates, rate, useDay );
       ss += theRates.echoData(true);
       
-      TheAmounts theAmounts = new TheAmounts(total);
+      ThePayments thePayments = new ThePayments(total);
       
-      theAmounts.cal_theAmounts( theRates, all_loan, useDay  );
-      ss += theAmounts.echoData(true);
+//      theAmounts.cal_theAmounts( theRates, all_loan, useDay  );
+      thePayments.setAllPrincipal((long)(all_loan*100));
+      
+      TheMethod theMtd = new TheMethod();
+      theMtd.cal_Payments(theRates, thePayments, useDay);
+      
+      
+      ss += thePayments.echoData(true);
       
       return ss;
   }
