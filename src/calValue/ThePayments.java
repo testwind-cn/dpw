@@ -19,13 +19,13 @@ public class ThePayments {
 	private long [] d_DueInterest;
 	
 	
-	public final static int ROUND_UP =           0;
-	public final static int ROUND_DOWN =         1;
-	public final static int ROUND_CEILING =      2;
-	public final static int ROUND_FLOOR =        3;
-	public final static int ROUND_HALF_UP =      4;
-	public final static int ROUND_HALF_DOWN =    5;
-	public final static int ROUND_HALF_EVEN =    6;
+	public final static int ROUND_UP =           java.math.BigDecimal.ROUND_UP;
+	public final static int ROUND_DOWN =         java.math.BigDecimal.ROUND_DOWN;
+	public final static int ROUND_CEILING =      java.math.BigDecimal.ROUND_CEILING;
+	public final static int ROUND_FLOOR =        java.math.BigDecimal.ROUND_FLOOR;
+	public final static int ROUND_HALF_UP =      java.math.BigDecimal.ROUND_HALF_UP;
+	public final static int ROUND_HALF_DOWN =    java.math.BigDecimal.ROUND_HALF_DOWN;
+	public final static int ROUND_HALF_EVEN =    java.math.BigDecimal.ROUND_HALF_EVEN;
 	
 	private int d_pmt_roundingMode = ROUND_HALF_UP;
 	private int d_I_roundingMode = ROUND_HALF_UP;

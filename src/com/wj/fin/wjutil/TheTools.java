@@ -50,7 +50,7 @@ public class TheTools {
 	
 	public static double round_mode(double data, int digit,int mode) {
 		BigDecimal bg = new BigDecimal(data);
-		if ( mode < 1 || mode > 7 )
+		if ( mode < java.math.BigDecimal.ROUND_UP || mode > java.math.BigDecimal.ROUND_HALF_EVEN )
 			mode = BigDecimal.ROUND_HALF_UP;
         double new_round = bg.setScale(digit, mode).doubleValue();
 		return new_round;
