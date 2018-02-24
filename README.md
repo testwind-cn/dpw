@@ -1,8 +1,7 @@
 
 
-rer er**
 
-# erer
+# 如何使用图形 UML
 
 
 
@@ -21,7 +20,7 @@ rer er**
 
 
 
-![Alt text](http://g.gravizo.com/g?   left to right direction; skinparam packageStyle rect;actor customer;actor chef;rectangle restaurant {customer -> (eat food);customer -> (pay for food);chef -> (cook food);}  )
+![Alt text](http://g.gravizo.com/g? left to right direction; skinparam packageStyle rect;actor customer;actor chef;rectangle restaurant {customer ->(eat food);customer -> (pay for food);chef -> (cook food);}  )
 
 
 
@@ -42,6 +41,8 @@ rer er**
 
 
 ![Alt text](https://g.gravizo.com/svg?digraph%20G%20%7B%0Aaize%20%3D%224%2C4%22%3B%0Amain%20%5Bshape%3Dbox%5D%3B%0Amain%20-%3E%20parse%20%5Bweight%3D8%5D%3B%0Aparse%20-%3E%20execute%3B%0Amain%20-%3E%20init%20%5Bstyle%3Ddotted%5D%3B%0Amain%20-%3E%20cleanup%3B%0Aexecute%20-%3E%20%7B%20make_string%3B%20printf%7D%0Ainit%20-%3E%20make_string%3B%0Aedge%20%5Bcolor%3Dred%5D%3B%0Amain%20-%3E%20printf%20%5Bstyle%3Dbold%2Clabel%3D%22100%20times%22%5D%3B%0Amake_string%20%5Blabel%3D%22make%20a%20string%22%5D%3B%0Anode%20%5Bshape%3Dbox%2Cstyle%3Dfilled%2Ccolor%3D%22.7%20.3%201.0%22%5D%3B%0Aexecute%20-%3E%20compare%3B%0A%7D )
+
+
     digraph G {
     aize ="4,4";
     main [shape=box];
@@ -60,7 +61,7 @@ rer er**
 
 ------
 
-![Alt text](https://g.gravizo.com/svg?%40startuml%3B%0A%0A(*)%20--%3E%20if%20%22Some%20Test%22%20then%3B%0A%0A%20%20--%3E%5Btrue%5D%20%22activity%201%22%3B%0A%0A%20%20if%20%22%22%20then%3B%0A%20%20%20%20-%3E%20%22activity%203%22%20as%20a3%3B%0A%20%20else%3B%0A%20%20%20%20if%20%22Other%20test%22%20then%3B%0A%20%20%20%20%20%20-left-%3E%20%22activity%205%22%3B%0A%20%20%20%20else%3B%0A%20%20%20%20%20%20--%3E%20%22activity%206%22%3B%0A%20%20%20%20endif%3B%0A%20%20endif%3B%0A%0Aelse%3B%0A%0A%20%20-%3E%5Bfalse%5D%20%22activity%202%22%3B%0A%0Aendif%3B%0A%0Aa3%20--%3E%20if%20%22last%20test%22%20then%3B%0A%20%20--%3E%20%22activity%207%22%3B%0Aelse%3B%0A%20%20-%3E%20%22activity%208%22%3B%0Aendif%3B%0A%0A%40enduml%20 )
+![Alt text](https://g.gravizo.com/svg?%40startuml%3B%0A(*)%20--%3E%20if%20%22Some%20Test%22%20then%3B%0A%20%20--%3E%5Btrue%5D%20%22activity%201%22%3B%0A%20%20if%20%22%22%20then%3B%0A%20%20%20%20-%3E%20%22activity%203%22%20as%20a3%3B%0A%20%20else%3B%0A%20%20%20%20if%20%22Other%20test%22%20then%3B%0A%20%20%20%20%20%20-left-%3E%20%22activity%205%22%3B%0A%20%20%20%20else%3B%0A%20%20%20%20%20%20--%3E%20%22activity%206%22%3B%0A%20%20%20%20endif%3B%0A%20%20endif%3B%20%20%20%20%0Aelse%3B%20%20%20%20%0A%20%20-%3E%5Bfalse%5D%20%22activity%202%22%3B%20%20%20%20%0Aendif%3B%20%20%20%20%0Aa3%20--%3E%20if%20%22last%20test%22%20then%3B%0A%20%20--%3E%20%22activity%207%22%3B%0Aelse%3B%0A%20%20-%3E%20%22activity%208%22%3B%0Aendif%3B%20%20%20%20%0A%40enduml%20)
 
 
     @startuml;
