@@ -103,20 +103,40 @@
 
 <details> 
 <summary></summary>
-thiisthemark6
-@startuml
-class Dummy {
-- private field1
-# protected field2
-+ public field3
-~ package method1()
-- private method3()
-# protected method4()
-+ public method2()
-}
-@enduml
-thiisthemark6
+    thiisthemark6
+     @startuml
+    class Dummy {
+    - private field1
+    # protected field2
+     + public field3
+    ~ package method1()
+    - private method3()
+    # protected method4()
+    + public method2()
+    }
+    @enduml
+    thiisthemark6
 </details>
+
+```
+<details> 
+<summary></summary>
+    thiisthemark6
+     @startuml
+    class Dummy {
+    - private field1
+    # protected field2
+     + public field3
+    ~ package method1()
+    - private method3()
+    # protected method4()
+    + public method2()
+    }
+    @enduml
+    thiisthemark6
+</details>
+```
+
 
 
 
