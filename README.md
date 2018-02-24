@@ -99,14 +99,11 @@
 
 ![Alt text](https://g.gravizo.com/source/svg/thiisthemark4?https://raw.githubusercontent.com/testwind-cn/dpw/master/data.uml )
 
-![Alt text](https://g.gravizo.com/source/svg/thiisthemark6?https://raw.githubusercontent.com/testwind-cn/dpw/master/data.uml )
-
-
+![Alt text](https://g.gravizo.com/source/svg/thiisthemark6?https://raw.githubusercontent.com/testwind-cn/dpw/master/README.md )
 
 
 <details> 
 <summary></summary>
-```
     thiisthemark6
      @startuml
     class Dummy {
@@ -114,16 +111,17 @@
     # protected field2
      + public field3
     ~ package method1()
-    - private method3()
+    - private method37()
     # protected method4()
     + public method2()
     }
     @enduml
     thiisthemark6
-```
 </details>
 
 
+```
+```
 
 
 
