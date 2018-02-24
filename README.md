@@ -117,7 +117,7 @@ https://g.gravizo.com/source/svg/thiisthemark26?https://raw.githubusercontent.co
     - private field1
     # protected field2
      + public field3
-    ~ package method1()
+    ~ package method13()
     - private method1237()
     # protected method4()
     + public method2()
@@ -130,7 +130,7 @@ https://g.gravizo.com/source/svg/thiisthemark26?https://raw.githubusercontent.co
      left to right direction; 
      skinparam packageStyle rect;
      actor customer;actor chef;
-     rectangle restaurant {customer ->(eat food);
+     rectangle restaurant {customer ->(teat food);
      customer -> (pay for food);
      chef -> (cook food);}  
 
