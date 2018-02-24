@@ -103,7 +103,7 @@
 ![Alt text](https://g.gravizo.com/source/svg/thiisthemark6?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
 
 
-![Alt text](https://g.gravizo.com/svg/thiisthemark16?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md  )
+![Alt text](https://g.gravizo.com/source/svg/thiisthemark16?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md  )
 
 
 <details> 
@@ -125,17 +125,13 @@ https://g.gravizo.com/source/svg/thiisthemark6?https://raw.githubusercontent.com
     
     
   thiisthemark16
-     @startuml
-    class Dummy {
-    - private field1
-    # protected field2
-     + public field3
-    ~ package method1()
-    - private method317()
-    # protected method4()
-    + public method2()
-    }
-    @enduml
+     left to right direction; 
+     skinparam packageStyle rect;
+     actor customer;actor chef;
+     rectangle restaurant {customer ->(eat food);
+     customer -> (pay for food);
+     chef -> (cook food);}  
+     
  thiisthemark16
  
 </details>
