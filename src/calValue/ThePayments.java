@@ -7,16 +7,16 @@ public class ThePayments {
 	// -13 .. -24两年，（ 多期、一期）
 	// -25按指定天,（ 多期、一期）
 
-	private long d1_all_loan = 0;
-	private int d3_total_Period = 0;
+	private long ww_all_loan = 0;
+	private int ww_total_Period = 0;
 
 
-	private double d6_Fixed_Payment = 0.0;
-	private long d6_Fixed_Payment_Round = 0;
+	private double ww_Fixed_Payment = 0.0;
+	private long ww_Fixed_Payment_Round = 0;
 
-	private long [] d_Principal;
-	private long [] d_DuePrincipal;
-	private long [] d_DueInterest;
+	private long [] ww_Principal;
+	private long [] ww_DuePrincipal;
+	private long [] ww_DueInterest;
 	
 	
 	public final static int ROUND_UP =           java.math.BigDecimal.ROUND_UP;
@@ -27,36 +27,36 @@ public class ThePayments {
 	public final static int ROUND_HALF_DOWN =    java.math.BigDecimal.ROUND_HALF_DOWN;
 	public final static int ROUND_HALF_EVEN =    java.math.BigDecimal.ROUND_HALF_EVEN;
 	
-	private int d_pmt_roundingMode = ROUND_HALF_UP;
-	private int d_I_roundingMode = ROUND_HALF_UP;
+	private int ww_pmt_roundingMode = ROUND_HALF_UP;
+	private int ww_I_roundingMode = ROUND_HALF_UP;
 
 
 	
-	public ThePayments(int num)
+	public ThePayments(int pp_num)
     {
-    	initMe(num);
+    	initMe(pp_num);
     }
 	
 
 
-	private void initMe(int num)
+	private void initMe(int pp_num)
 	{
 		//        $this->data_start_date = date_create();
 		
-		if (num <= 0) {
-			d3_total_Period = 0;
+		if (pp_num <= 0) {
+			ww_total_Period = 0;
 			return;			
 		}
-		d3_total_Period = num;
+		ww_total_Period = pp_num;
 
-		d_Principal = new long[num+2];
-		d_DuePrincipal = new long[num+2];
-		d_DueInterest = new long[num+2];
+		ww_Principal = new long[pp_num+2];
+		ww_DuePrincipal = new long[pp_num+2];
+		ww_DueInterest = new long[pp_num+2];
 
-		for (int i=0 ; i<=num+1;i++){
-			d_Principal[i] = 0;
-			d_DuePrincipal[i] = 0;
-			d_DueInterest[i] = 0;
+		for (int i=0 ; i<=pp_num+1;i++){
+			ww_Principal[i] = 0;
+			ww_DuePrincipal[i] = 0;
+			ww_DueInterest[i] = 0;
 			//            $this->data_z_ByDay[$i] = false;
 		}
 
@@ -80,89 +80,89 @@ public class ThePayments {
             // unset($this->data_z_ByDay[$i]);
         }
 		 */
-		d_Principal = null;
-		d_DuePrincipal = null;
-		d_DueInterest = null;
+		ww_Principal = null;
+		ww_DuePrincipal = null;
+		ww_DueInterest = null;
 		// $this->data_z_ByDay = null;
 	}
 
 	
 	public int getCount()
 	{ // ???
-		return d3_total_Period;
+		return ww_total_Period;
 	}
 	
-	public void setCount(int num)
+	public void setCount(int pp_num)
 	{ // ???
-		if ( num != d3_total_Period ) {
+		if ( pp_num != ww_total_Period ) {
 			releaseMe();
-			initMe(num);
+			initMe(pp_num);
 		}
 	}
 
 	
-	public void setRoundingMode( int f_pmt_mode, int interest_mode ) {
-		d_pmt_roundingMode = f_pmt_mode;
-		d_I_roundingMode = interest_mode;
+	public void setRoundingMode( int pp_f_pmt_mode, int pp_interest_mode ) {
+		ww_pmt_roundingMode = pp_f_pmt_mode;
+		ww_I_roundingMode = pp_interest_mode;
 	}
-	public long set_Fixed_Payment( double f_pmt) {
-		d6_Fixed_Payment = f_pmt;
-		d6_Fixed_Payment_Round = ( long ) com.wj.fin.wjutil.TheTools.round_mode( f_pmt, 0, d_pmt_roundingMode );
-		return d6_Fixed_Payment_Round;
+	public long set_Fixed_Payment( double pp_f_pmt) {
+		ww_Fixed_Payment = pp_f_pmt;
+		ww_Fixed_Payment_Round = ( long ) com.wj.fin.wjutil.TheTools.round_mode( pp_f_pmt, 0, ww_pmt_roundingMode );
+		return ww_Fixed_Payment_Round;
 	}
 	
 	public long get_Fixed_Payment() {
-		return d6_Fixed_Payment_Round;
+		return ww_Fixed_Payment_Round;
 	}
 	
 	
 	
-	public void setAllPrincipal( long Principal) {
-		d1_all_loan = Principal;				
+	public void setAllPrincipal( long pp_Principal) {
+		ww_all_loan = pp_Principal;				
 //				( long ) com.wj.fin.wjutil.TheTools.round_half_up( all_loan*100, 0 );
 	}
 	
-	public void setPrincipal(int num, long Principal) {
-		if ( num <0 || num > getCount() ) return;
-		d_Principal[num] = Principal;
+	public void setPrincipal(int pp_num, long pp_Principal) {
+		if ( pp_num <0 || pp_num > getCount() ) return;
+		ww_Principal[pp_num] = pp_Principal;
 	}
 	
-	public void setDuePrincipal(int num, long duePrincipal) {
-		if ( num <0 || num > getCount() ) return;
-		d_DuePrincipal[num] = duePrincipal;
+	public void setDuePrincipal(int pp_num, long pp_duePrincipal) {
+		if ( pp_num <0 || pp_num > getCount() ) return;
+		ww_DuePrincipal[pp_num] = pp_duePrincipal;
 	}
 	
-	public void setDueInterest(int num, double DueInterest) {
-		if ( num <0 || num > getCount() ) return;
-		d_DueInterest[num] = ( long ) com.wj.fin.wjutil.TheTools.round_mode( DueInterest, 0, d_I_roundingMode );
+	public void setDueInterest(int pp_num, double pp_DueInterest) {
+		if ( pp_num <0 || pp_num > getCount() ) return;
+		ww_DueInterest[pp_num] = ( long ) com.wj.fin.wjutil.TheTools.round_mode( pp_DueInterest, 0, ww_I_roundingMode );
 	}
 	
 	public long getAllPrincipal() {
-		return d1_all_loan;				
+		return ww_all_loan;				
 	}
 	
-	public long getPrincipal(int num) {
-		if ( num <0 || num > getCount() ) return 0;
-		return d_Principal[num];
+	public long getPrincipal(int pp_num) {
+		if ( pp_num <0 || pp_num > getCount() ) return 0;
+		return ww_Principal[pp_num];
 	}
 	
-	public long getDuePrincipal(int num) {
-		if ( num <0 || num > getCount() ) return 0;
-		return d_DuePrincipal[num];
+	public long getDuePrincipal(int pp_num) {
+		if ( pp_num <0 || pp_num > getCount() ) return 0;
+		return ww_DuePrincipal[pp_num];
 	}
 	
-	public long getDueInterest(int num) {
-		if ( num <0 || num > getCount() ) return 0;
-		return d_DueInterest[num];
+	public long getDueInterest(int pp_num) {
+		if ( pp_num <0 || pp_num > getCount() ) return 0;
+		return ww_DueInterest[pp_num];
 	}
 	
 	public long [] getPrincipals() {
-		int num = getCount();
-		if ( num <= 0 ) return null;
+		int ll_num = getCount();
+		if ( ll_num <= 0 ) return null;
 		
-		long [] a_array = new long[num];
-		for (int i=0;i<num;i++) {
-			a_array[i] = d_Principal[i+1];
+		long [] a_array = new long[ll_num];
+		for (int i=0;i<ll_num;i++) {
+			a_array[i] = ww_Principal[i+1];
 		}
 		return a_array;
 	}
@@ -173,18 +173,18 @@ public class ThePayments {
 		
 		long [] a_array = new long[num];
 		for (int i=0;i<num;i++) {
-			a_array[i] = d_DuePrincipal[i+1];
+			a_array[i] = ww_DuePrincipal[i+1];
 		}
 		return a_array;
 	}
 	
 	public long [] getDueInterests() {
-		int num = getCount();
-		if ( num <= 0 ) return null;
+		int ll_num = getCount();
+		if ( ll_num <= 0 ) return null;
 		
-		long [] a_array = new long[num];
-		for (int i=0;i<num;i++) {
-			a_array[i] = d_DueInterest[i+1];
+		long [] a_array = new long[ll_num];
+		for (int i=0;i<ll_num;i++) {
+			a_array[i] = ww_DueInterest[i+1];
 		}
 		return a_array;
 	}
@@ -259,36 +259,36 @@ public class ThePayments {
 		//    $this->data_due_amount = $this->data_due_principal + $this->data_due_interest;
 	}
 */
-	public String echoData( boolean need_table ) //=true )
+	public String echoData( boolean pp_need_table ) //=true )
 	{
-		String echoStr = null;
-		if ( need_table ) {
+		String ll_echoStr = null;
+		if ( pp_need_table ) {
 			//echo date_default_timezone_get();
 			            
-            echoStr = "<table border=1 cellspacing=0 cellpadding=0>\n";
-            for (int x=0; x <= d3_total_Period+1; x++) {
-                echoStr = echoStr+"    <tr>\n";
+            ll_echoStr = "<table border=1 cellspacing=0 cellpadding=0>\n";
+            for (int x=0; x <= ww_total_Period+1; x++) {
+                ll_echoStr = ll_echoStr+"    <tr>\n";
 
 
-                echoStr =echoStr+"        <td>"+x+"</td>\n";
+                ll_echoStr =ll_echoStr+"        <td>"+x+"</td>\n";
                 //            $echoStr = $echoStr."        <td>".date_format($this->data_start_date,"Y-m-d")."</td>\n";
-                echoStr = echoStr+"        <td>"+d_Principal[x]/100.0+"</td>\n";
-                echoStr = echoStr+"        <td>"+d_DuePrincipal[x]/100.0+"</td>\n";
-                echoStr = echoStr+"        <td>"+d_DueInterest[x]/100.0+"</td>\n";
-                echoStr = echoStr+"        <td>"+(d_DuePrincipal[x]+d_DueInterest[x])/100.0+"</td>\n";
+                ll_echoStr = ll_echoStr+"        <td>"+ww_Principal[x]/100.0+"</td>\n";
+                ll_echoStr = ll_echoStr+"        <td>"+ww_DuePrincipal[x]/100.0+"</td>\n";
+                ll_echoStr = ll_echoStr+"        <td>"+ww_DueInterest[x]/100.0+"</td>\n";
+                ll_echoStr = ll_echoStr+"        <td>"+(ww_DuePrincipal[x]+ww_DueInterest[x])/100.0+"</td>\n";
 
-                echoStr = echoStr+"\n";
+                ll_echoStr = ll_echoStr+"\n";
 
 
-                echoStr = echoStr+"    </tr>\n";
+                ll_echoStr = ll_echoStr+"    </tr>\n";
             }
-            echoStr = echoStr+"</table>\n";
+            ll_echoStr = ll_echoStr+"</table>\n";
 
              
 //            echo $echoStr;
                  
 		}
-		return echoStr;
+		return ll_echoStr;
 
 	}
 
