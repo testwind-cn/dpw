@@ -101,6 +101,10 @@
 
 ![Alt text](https://g.gravizo.com/source/svg/thiisthemark6?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
 
+
+![Alt text](https://g.gravizo.com/svg/thiisthemark16?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md  )
+
+
 <details> 
 <summary></summary>
 https://g.gravizo.com/source/svg/thiisthemark6?https://raw.githubusercontent.com/testwind-cn/dpw/master/README.md 
@@ -117,6 +121,21 @@ https://g.gravizo.com/source/svg/thiisthemark6?https://raw.githubusercontent.com
     }
     @enduml
     thiisthemark6
+    
+    
+  thiisthemark16
+     @startuml
+    class Dummy {
+    - private field1
+    # protected field2
+     + public field3
+    ~ package method1()
+    - private method37()
+    # protected method4()
+    + public method2()
+    }
+    @enduml
+ thiisthemark16
 </details>
 
 
@@ -124,4 +143,4 @@ https://g.gravizo.com/source/svg/thiisthemark6?https://raw.githubusercontent.com
 
 
 
-![Alt text](https://g.gravizo.com/svg? abstract class AbstractList; interface List;List <|.. AbstractList; )
+
