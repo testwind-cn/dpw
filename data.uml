@@ -82,6 +82,8 @@ thiisthemark4
 
 
 
+<details> 
+<summary></summary>
 thiisthemark6
 @startuml
 class Dummy {
@@ -95,3 +97,4 @@ class Dummy {
 }
 @enduml
 thiisthemark6
+</details>
