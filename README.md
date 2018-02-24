@@ -111,30 +111,31 @@
 https://g.gravizo.com/source/svg/thiisthemark26?https://raw.githubusercontent.com/testwind-cn/dpw/master/README.md 
 
 ```
-    thiisthemark26
-     @startuml
-    class Dummy {
-    - private field1
-    # protected field2
-     + public field3
-    ~ package method13()
-    - private method1237()
-    # protected method4()
-    + public method2()
-    }
-    @enduml
-    thiisthemark26
+thiisthemark26
+@startuml
+class Dummy {
+- private field1
+# protected field2
++ public field3
+~ package method13()
+- private method1237()
+# protected method4()
++ public method2()
+}
+@enduml
+thiisthemark26
 
 
-  thiisthemark16
-     left to right direction; 
-     skinparam packageStyle rect;
-     actor customer;actor chef;
-     rectangle restaurant {customer ->(teat food);
-     customer -> (pay for food);
-     chef -> (cook food);}  
+thiisthemark16
+left to right direction; 
+skinparam packageStyle rect;
+actor customer;actor chef;
+rectangle restaurant {customer ->(teat food);
+customer -> (pay for food);
+chef -> (cook food);}  
 
- thiisthemark16
+thiisthemark16
+
 ```
 
 </details>
