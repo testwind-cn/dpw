@@ -100,7 +100,7 @@
 
 ![Alt text](https://g.gravizo.com/source/svg/thiisthemark4?https://raw.githubusercontent.com/testwind-cn/dpw/master/data.uml )
 
-![Alt text](https://g.gravizo.com/source/svg/thiisthemark6?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
+![Alt text](https://g.gravizo.com/source/svg/thiisthemark26?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
 
 
 ![Alt text](https://g.gravizo.com/source/svg/thiisthemark16?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md  )
@@ -108,10 +108,10 @@
 
 <details> 
 <summary></summary>
-https://g.gravizo.com/source/svg/thiisthemark6?https://raw.githubusercontent.com/testwind-cn/dpw/master/README.md 
+https://g.gravizo.com/source/svg/thiisthemark26?https://raw.githubusercontent.com/testwind-cn/dpw/master/README.md 
 
 ```
-    thiisthemark6
+    thiisthemark26
      @startuml
     class Dummy {
     - private field1
@@ -123,7 +123,7 @@ https://g.gravizo.com/source/svg/thiisthemark6?https://raw.githubusercontent.com
     + public method2()
     }
     @enduml
-    thiisthemark6
+    thiisthemark26
 
 
   thiisthemark16
