@@ -194,6 +194,13 @@ wjmark01
 35
 ![Alt text](https://g.gravizo.com/source/svg/wjmark35?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
 
+
+38
+![Alt text](https://g.gravizo.com/source/svg/wjmark38?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
+
+
+39
+![Alt text](https://g.gravizo.com/source/svg/wjmark39?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
 ------
 
 <details> 
@@ -306,6 +313,82 @@ endif
 @enduml 
 wjmark37
 
+
+
+
+
+
+wjmark38
+@startuml
+
+title 流程图
+
+(*) --> "步骤1处理"
+--> "步骤2处理"
+if "条件1判断" then
+    ->[true] "条件1成立时执行的动作"
+    if "分支条件2判断" then
+        ->[no] "条件2不成立时执行的动作"
+        -> === 中间流程汇总点1 ===
+    else
+        -->[yes] === 中间流程汇总点1 ===
+    endif
+    if "分支条件3判断" then
+        -->[yes] "分支条件3成立时执行的动作"
+        --> "Page.onRender ()" as render
+        --> === REDIRECT_CHECK ===
+    else
+        -->[no] "分支条件3不成立时的动作"
+        --> render
+    endif
+else
+    -->[false] === REDIRECT_CHECK ===
+endif
+
+if "条件4判断" then
+    ->[yes] "条件4成立时执行的动作"
+    --> "流程最后结点"
+else
+endif
+--> "流程最后结点"
+-->(*)
+
+@enduml
+wjmark38
+
+
+wjmark39
+@startuml
+
+start
+:"步骤1处理";
+:"步骤2处理";
+if ("条件1判断") then (true)
+    :条件1成立时执行的动作;
+    if ("分支条件2判断") then (no)
+        :"条件2不成立时执行的动作";
+    else
+        if ("条件3判断") then (yes)
+            :"条件3成立时的动作";
+        else (no)
+            :"条件3不成立时的动作";
+        endif
+    endif
+    :"顺序步骤3处理";
+endif
+
+if ("条件4判断") then (yes)
+:"条件4成立的动作";
+else
+    if ("条件5判断") then (yes)
+        :"条件5成立时的动作";
+    else (no)
+        :"条件5不成立时的动作";
+    endif
+endif
+stop
+@enduml
+wjmark39
 
 ```
 
