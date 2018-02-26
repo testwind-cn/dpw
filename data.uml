@@ -82,8 +82,6 @@ wjmark05
 
 
 
-<details> 
-<summary></summary>
 wjmark06
 @startuml
 class Dummy {
@@ -141,4 +139,4 @@ endif
 
 @enduml 
 wjmark07
-</details>
+
