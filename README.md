@@ -155,8 +155,8 @@ thiisthemark24
 digraph G {
     aize ="4,4";
            主程序 [shape=box];
-           主程序 -> parse [weight=8];
-    parse -> 执行;
+           主程序 -> 处理 [weight=8];
+            处理 -> 执行;
            主程序 -> init [style=dotted];
            主程序 -> cleanup;
              执行 -> { make_string; printf}
