@@ -64,28 +64,32 @@
 
 ![Alt text](https://g.gravizo.com/svg?%40startuml%3B%0A(*)%20--%3E%20if%20%22Some%20Test%22%20then%3B%0A%20%20--%3E%5Btrue%5D%20%22activity%201%22%3B%0A%20%20if%20%22%22%20then%3B%0A%20%20%20%20-%3E%20%22activity%203%22%20as%20a3%3B%0A%20%20else%3B%0A%20%20%20%20if%20%22Other%20test%22%20then%3B%0A%20%20%20%20%20%20-left-%3E%20%22activity%205%22%3B%0A%20%20%20%20else%3B%0A%20%20%20%20%20%20--%3E%20%22activity%206%22%3B%0A%20%20%20%20endif%3B%0A%20%20endif%3B%20%20%20%20%0Aelse%3B%20%20%20%20%0A%20%20-%3E%5Bfalse%5D%20%22activity%202%22%3B%20%20%20%20%0Aendif%3B%20%20%20%20%0Aa3%20--%3E%20if%20%22last%20test%22%20then%3B%0A%20%20--%3E%20%22activity%207%22%3B%0Aelse%3B%0A%20%20-%3E%20%22activity%208%22%3B%0Aendif%3B%20%20%20%20%0A%40enduml%20)
 
-
-    @startuml;
-    (*) --> if "Some Test" then;
-      -->[true] "activity 1";
-      if "" then;
-        -> "activity 3" as a3;
-      else;
-        if "Other test" then;
-          -left-> "activity 5";
-        else;
-          --> "activity 6";
-        endif;
-      endif;    
-    else;    
-      ->[false] "activity 2";    
-    endif;    
-    a3 --> if "last test" then;
-      --> "activity 7";
-    else;
-      -> "activity 8";
-    endif;    
+<details> 
+<summary></summary>
+```
+    @startuml
+    (*) --> if "Some Test" then
+      -->[true] "activity 1"
+      if "" then
+        -> "activity 3" as a3
+      else
+        if "Other test" then
+          -left-> "activity 5"
+        else
+          --> "activity 6"
+        endif
+      endif  
+    else 
+      ->[false] "activity 2"    
+    endif
+    a3 --> if "last test" then
+      --> "activity 7"
+    else
+      -> "activity 8"
+    endif  
     @enduml 
+```
+</details>
 
 ![Alt text](http://www.gravizo.com/img/1x1.png#)
 
@@ -111,30 +115,31 @@
 https://g.gravizo.com/source/svg/thiisthemark26?https://raw.githubusercontent.com/testwind-cn/dpw/master/README.md 
 
 ```
-    thiisthemark26
-     @startuml
-    class Dummy {
-    - private field1
-    # protected field2
-     + public field3
-    ~ package method13()
-    - private method1237()
-    # protected method4()
-    + public method2()
-    }
-    @enduml
-    thiisthemark26
+thiisthemark26
+@startuml
+class Dummy {
+- private field1
+# protected field2
++ public field3
+~ package method13()
+- private method1237()
+# protected method4()
++ public method2()
+}
+@enduml
+thiisthemark26
 
 
-  thiisthemark16
-     left to right direction; 
-     skinparam packageStyle rect;
-     actor customer;actor chef;
-     rectangle restaurant {customer ->(teat food);
-     customer -> (pay for food);
-     chef -> (cook food);}  
+thiisthemark16
+left to right direction; 
+skinparam packageStyle rect;
+actor customer;actor chef;
+rectangle restaurant {customer ->(teat food);
+customer -> (pay for food);
+chef -> (cook food);}  
 
- thiisthemark16
+thiisthemark16
+
 ```
 
 </details>

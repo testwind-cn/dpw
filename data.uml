@@ -6,13 +6,13 @@
 
 thiisthemark2 
 @startuml
-[*] --> State1;
-State1 --> [*];
-State1 : this is a string;
-State1 : this is another string;
+[*] --> State1
+State1 --> [*]
+State1 : this is a string
+State1 : this is another string
 
-State1 -> State2;
-State2 --> [*];
+State1 -> State2
+State2 --> [*]
 
 @enduml
 thiisthemark2
@@ -26,13 +26,13 @@ object Object03
 object Object04
 object Object05
 object Object06
-object Object07
+object Object07我
 object Object08
 
 Object01 <|-- Object02
 Object03 *-- Object04
 Object05 o-- "5" Object06
-Object07 .. Object08 : "some 我labels"
+Object07我 .. Object08 : "some 我labels"
 @enduml
 thiisthemark5
 
@@ -61,6 +61,7 @@ thiisthemark3
 
 
 thiisthemark4
+@startuml
 digraph G {
     aize ="4,4";
     main [shape=box];
@@ -76,7 +77,7 @@ digraph G {
     node [shape=box,style=filled,color=".7 .3 1.0"];
     execute -> compare;
   }
-
+@enduml
 thiisthemark4
 
 
@@ -95,6 +96,17 @@ class Dummy {
 # protected method4()
 + public method2()
 }
+
+class Dummy5 {
+- private field1
+# protected field2
++ public field3
+~ package method1()
+- private method3()
+# protected method4()
++ public method2()
+}
+
 @enduml
 thiisthemark6
 </details>

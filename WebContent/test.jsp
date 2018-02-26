@@ -13,6 +13,7 @@
 function compress(s, change) {
   //UTF8
   s = unescape(encodeURIComponent(s));
+  alert( encode64(s)  ) ;
   dest = "http://www.plantuml.com/plantuml" + "/svg/"+encode64(zip_deflate(s, 9));
   alert( dest );
   window.location.href = dest;
