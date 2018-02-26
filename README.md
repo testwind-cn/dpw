@@ -214,17 +214,36 @@ https://g.gravizo.com/source/svg/wjmark26?https://raw.githubusercontent.com/test
 
 ```
 
+
 wjmark16
+@startuml
+left to right direction
+skinparam packageStyle rect
+actor customer
+actor chef
+rectangle restaurant {
+    customer ->(eat food)
+    customer -> (pay for food)
+    chef -> (cook food)
+}
+@enduml
+wjmark16
+
+
+
+
+wjmark16_old
 left to right direction; 
 skinparam packageStyle rect;
 actor customer;actor chef;
-rectangle restaurant {customer ->(teat food);
-customer -> (pay for food);
-chef -> (cook food);}  
+rectangle restaurant {customer ->;(teat food);
+customer ->; (pay for food);
+chef ->; (cook food);}  
 
-wjmark16
+wjmark16_old
 
 
+DOT
 
 wjmark24
 digraph G {
