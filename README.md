@@ -232,15 +232,16 @@ wjmark16
 
 
 
-wjmark16_old
+wjmarkold_16
+@startuml
 left to right direction; 
 skinparam packageStyle rect;
 actor customer;actor chef;
 rectangle restaurant {customer ->;(teat food);
 customer ->; (pay for food);
 chef ->; (cook food);}  
-
-wjmark16_old
+@enduml
+wjmarkold_16
 
 
 DOT
