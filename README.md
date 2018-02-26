@@ -104,10 +104,13 @@
 
 ![Alt text](https://g.gravizo.com/source/svg/thiisthemark4?https://raw.githubusercontent.com/testwind-cn/dpw/master/data.uml )
 
+![Alt text](https://g.gravizo.com/source/svg/thiisthemark16?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md  )
+
 ![Alt text](https://g.gravizo.com/source/svg/thiisthemark26?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
 
 
-![Alt text](https://g.gravizo.com/source/svg/thiisthemark16?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md  )
+
+![Alt text](https://g.gravizo.com/source/svg/thiisthemark35?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
 
 
 <details> 
@@ -115,10 +118,18 @@
 https://g.gravizo.com/source/svg/thiisthemark26?https://raw.githubusercontent.com/testwind-cn/dpw/master/README.md 
 
 
-
-![Alt text](https://g.gravizo.com/source/svg/thiisthemark35?https://raw.githubusercontent.com/testwind-cn/dpw/master/README.md )
-
 ```
+
+thiisthemark16
+left to right direction; 
+skinparam packageStyle rect;
+actor customer;actor chef;
+rectangle restaurant {customer ->(teat food);
+customer -> (pay for food);
+chef -> (cook food);}  
+
+thiisthemark16
+
 thiisthemark26
 @startuml
 class Dummy {
@@ -134,15 +145,7 @@ class Dummy {
 thiisthemark26
 
 
-thiisthemark16
-left to right direction; 
-skinparam packageStyle rect;
-actor customer;actor chef;
-rectangle restaurant {customer ->(teat food);
-customer -> (pay for food);
-chef -> (cook food);}  
 
-thiisthemark16
 
 
 
