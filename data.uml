@@ -4,7 +4,7 @@
 
 
 
-thiisthemark2 
+wjmark02 
 @startuml
 [*] --> State1
 State1 --> [*]
@@ -15,11 +15,11 @@ State1 -> State2
 State2 --> [*]
 
 @enduml
-thiisthemark2
+wjmark02
 
 
 
-thiisthemark3
+wjmark03
 class Structural{}
 
 /**
@@ -37,12 +37,12 @@ class Counter extends Structural {
 *@note Active Class
 */
 class RunningCounter extends Counter{}
-thiisthemark3
+wjmark03
 
 
 
 
-thiisthemark4
+wjmark04
 digraph G {
     aize ="4,4";
     main [shape=box];
@@ -58,10 +58,10 @@ digraph G {
     node [shape=box,style=filled,color=".7 .3 1.0"];
     execute -> compare;
   }
-thiisthemark4
+wjmark04
 
 
-thiisthemark5
+wjmark05
 @startuml
 object Object01
 object Object02
@@ -77,14 +77,14 @@ Object03 *-- Object04
 Object05 o-- "5" Object06
 Object07我 .. Object08 : "some 我labels"
 @enduml
-thiisthemark5
+wjmark05
 
 
 
 
 <details> 
 <summary></summary>
-thiisthemark6
+wjmark06
 @startuml
 class Dummy {
 - private field1
@@ -107,5 +107,38 @@ class Dummy5 {
 }
 
 @enduml
-thiisthemark6
+wjmark06
+
+
+wjmark07
+@startuml
+
+(*) --> if "Some Test" then
+
+  -->[true] "activity 1"
+
+  if "" then
+    -> "activity 3" as a3
+  else
+    if "Other test" then
+      -left-> "activity 5"
+    else
+      --> "activity 6"
+    endif
+  endif
+
+else
+
+  ->[false] "activity 2"
+
+endif
+
+a3 --> if "last test" then
+  --> "activity 7"
+else
+  -> "activity 8"
+endif
+
+@enduml 
+wjmark07
 </details>
