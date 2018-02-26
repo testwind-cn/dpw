@@ -95,7 +95,7 @@
 
 ------
 
-![Alt text](https://g.gravizo.com/source/svg/thiisthemark5?https://raw.githubusercontent.com/testwind-cn/dpw/master/data.uml )
+![Alt text](https://g.gravizo.com/source/svg/thiisthemark35?https://raw.githubusercontent.com/testwind-cn/dpw/master/README.md )
 
 
 ![Alt text](https://g.gravizo.com/source/svg/thiisthemark2?https://raw.githubusercontent.com/testwind-cn/dpw/master/data.uml )
@@ -139,6 +139,26 @@ customer -> (pay for food);
 chef -> (cook food);}  
 
 thiisthemark16
+
+
+
+thiisthemark35
+@startuml
+object Object01
+object Object02
+object Object03
+object Object04
+object Object05
+object Object06
+object Object07我
+object Object08
+
+Object01 <|-- Object02
+Object03 *-- Object04
+Object05 o-- "5" Object06
+Object07我 .. Object08 : "some 我labels"
+@enduml
+thiisthemark35
 
 ```
 
