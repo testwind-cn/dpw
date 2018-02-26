@@ -156,7 +156,7 @@ digraph G {
     aize ="4,4";
            主程序 [shape=box];
            主程序 -> parse [weight=8];
-    parse -> execute;
+    parse -> 执行;
            主程序 -> init [style=dotted];
            主程序 -> cleanup;
              执行 -> { make_string; printf}
