@@ -218,10 +218,10 @@ https://g.gravizo.com/source/svg/wjmark26?https://raw.githubusercontent.com/test
 wjmark16
 @startuml
 left to right direction
-skinparam packageStyle rect
+skinparam packageStyle Folder
 actor customer
 actor chef
-rectangle restaurant {
+package restaurant {
     customer ->(eat food)
     customer -> (pay for food)
     chef -> (cook food)
@@ -232,16 +232,7 @@ wjmark16
 
 
 
-wjmarkold_16
-@startuml
-left to right direction; 
-skinparam packageStyle rect;
-actor customer;actor chef;
-rectangle restaurant {customer ->;(teat food);
-customer ->; (pay for food);
-chef ->; (cook food);}  
-@enduml
-wjmarkold_16
+
 
 
 DOT
