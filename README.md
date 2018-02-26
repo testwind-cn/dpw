@@ -21,13 +21,13 @@
 
 
 
-![Alt text](http://g.gravizo.com/g?a-->b:how%20are%20you;note%20right:greeting;a->a:i%20am%20thinking;b-> a:fine;  )
+![Alt text](http://g.gravizo.com/g?a-->b:how%20are%20you;note%20right:greeting;a->a:i%20am%20thinking;b->%20a:fine;  )
 
 
 
 
 
-![Alt text](http://g.gravizo.com/g?HTTP-[web%20server];[web%20server]-[app%20server];%20database "mysql"{;[database];};[app%20server]-[database];   )
+![Alt text](http://g.gravizo.com/g?HTTP-[web%20server];[web%20server]-[app%20server];%20database%20"mysql"{;[database];};[app%20server]-[database];   )
 
 ------
 
