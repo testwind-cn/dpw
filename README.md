@@ -143,6 +143,26 @@ chef -> (cook food);}
 
 thiisthemark16
 
+
+
+thiisthemark24
+digraph G {
+    aize ="4,4";
+           主程序 [shape=box];
+           主程序 -> parse [weight=8];
+    parse -> execute;
+           主程序 -> init [style=dotted];
+           主程序 -> cleanup;
+             执行 -> { make_string; printf}
+    init -> make_string;
+    edge [color=red];
+           主程序 -> printf [style=bold,label="100 times"];
+    make_string [label="make a string"];
+    node [shape=box,style=filled,color=".7 .3 1.0"];
+             执行 -> compare;
+  }
+thiisthemark24
+
 thiisthemark26
 @startuml
 class Dummy {
