@@ -67,6 +67,7 @@
 <details> 
 <summary></summary>
 ```
+<<<<<<< HEAD
     @startuml
     (*) --> if "Some Test" then
       -->[true] "activity 1"
@@ -87,6 +88,28 @@
     else
       -> "activity 8"
     endif  
+=======
+    @startuml;
+    (*) --> if "Some Test" then;
+      -->[true] "activity 1";
+      if "" then;
+        -> "activity 3" as a3;
+      else;
+        if "Other test" then;
+          -left-> "activity 5";
+        else;
+          --> "activity 6";
+        endif;
+      endif;    
+    else;    
+      ->[false] "activity 2";    
+    endif;    
+    a3 --> if "last test" then;
+      --> "activity 7";
+    else;
+      -> "activity 8";
+    endif;    
+>>>>>>> b4f68eb1f69c52d86ec0c5656e4fb29f36b27a6a
     @enduml 
 ```
 </details>
