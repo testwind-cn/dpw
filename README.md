@@ -205,6 +205,10 @@ wjmark01
 
 ![Alt text](https://g.gravizo.com/source/svg/wjmark39?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
 
+50
+
+![Alt text](https://g.gravizo.com/source/svg/wjmark50?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
+
 ------
 
 <details> 
@@ -405,6 +409,49 @@ endif
 stop
 @enduml
 wjmark39
+
+
+
+
+
+
+wjmark50
+@startuml
+
+title 我测试流程图
+
+(*) --> "提交身份证"
+--> "提交银行卡"
+if "实名验证结果" then
+    ->[true] "提示用户验证成功"
+    if "短信验证码判断" then
+        ->[no] "验证码错误提示"
+        -> === 中间流程汇总点1 ===
+    else
+        -->[yes] === 中间流程汇总点1 ===
+    endif
+    if "分支条件3判断" then
+        -->[yes] "分支条件3成立时执行的动作"
+        --> "Page.onRender ()" as render
+        --> === REDIRECT_CHECK ===
+    else
+        -->[no] "分支条件3不成立时的动作"
+        --> render
+    endif
+else
+    -->[false] === REDIRECT_CHECK ===
+endif
+
+if "条件4判断" then
+    ->[yes] "条件4成立时执行的动作"
+    --> "流程最后结点"
+else
+endif
+--> "流程最后结点"
+-->(*)
+
+@enduml
+wjmark50
 
 ```
 
