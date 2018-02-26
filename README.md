@@ -8,28 +8,29 @@
 
 
 
+------
+
+这个是直接在URL上写语句，但是GIT、Eclipse不能正常解析空格，Typora能解析
+
 ![Alt text](http://g.gravizo.com/g?a->b:hello;b->a:h1w2iw;)
 
 
 ![Alt text](http://g.gravizo.com/svg?a->b:hello;b->a:h1w2iw;)
 
-![Alt text](http://g.gravizo.com/svg?a->b:hello d d;b->a:h1w2iw;)
+![Alt text](http://g.gravizo.com/svg?a->b:hello%20d%20d;b->a:h1w2iw;)
 
 
 
-![Alt text](http://g.gravizo.com/g?    a --> b: how are you;note right: greeting;a -> a: i am thinking;b -> a: fine;  )
-
-
-
-![Alt text](http://g.gravizo.com/g? left to right direction; skinparam packageStyle rect;actor customer;actor chef;rectangle restaurant {customer ->(eat food);customer -> (pay for food);chef -> (cook food);}  )
+![Alt text](http://g.gravizo.com/g?a-->b:how%20are%20you;note%20right:greeting;a->a:i%20am%20thinking;b-> a:fine;  )
 
 
 
 
-![Alt text](http://g.gravizo.com/g?  (*) --> "buy 10 apples"; if "is there watermelon " then; -->[true] "buy a apple"; -right-> (*); else; ->[false] "Something else"; -->(*); endif;  )
 
+![Alt text](http://g.gravizo.com/g?HTTP-[web%20server];[web%20server]-[app%20server];%20database "mysql"{;[database];};[app%20server]-[database];   )
 
-![Alt text](http://g.gravizo.com/g?  HTTP - [web server];  [web server] - [app server];  database "mysql" {;  [database];  }; [app server] - [database];   )
+------
+
 
 [^1]: sdsds
 [^n]: sdsdsdsdss
@@ -71,42 +72,88 @@ digraph G {
 
 这个是用 http://www.gravizo.com/#converter 来做的url转换成一行编码
 
-![Alt text](https://g.gravizo.com/svg?%40startuml%3B%0A(*)%20--%3E%20if%20%22Some%20Test%22%20then%3B%0A%20%20--%3E%5Btrue%5D%20%22activity%201%22%3B%0A%20%20if%20%22%22%20then%3B%0A%20%20%20%20-%3E%20%22activity%203%22%20as%20a3%3B%0A%20%20else%3B%0A%20%20%20%20if%20%22Other%20test%22%20then%3B%0A%20%20%20%20%20%20-left-%3E%20%22activity%205%22%3B%0A%20%20%20%20else%3B%0A%20%20%20%20%20%20--%3E%20%22activity%206%22%3B%0A%20%20%20%20endif%3B%0A%20%20endif%3B%20%20%20%20%0Aelse%3B%20%20%20%20%0A%20%20-%3E%5Bfalse%5D%20%22activity%202%22%3B%20%20%20%20%0Aendif%3B%20%20%20%20%0Aa3%20--%3E%20if%20%22last%20test%22%20then%3B%0A%20%20--%3E%20%22activity%207%22%3B%0Aelse%3B%0A%20%20-%3E%20%22activity%208%22%3B%0Aendif%3B%20%20%20%20%0A%40enduml%20)
+![Alt text](https://g.gravizo.com/svg?%40startuml%3B%0A(*)%20--%3E%20if%20%22Some%20Test%22%20then%3B%0A%20%20--%3E%5Btrue%5D%20%22activity%201%22%3B%0A%20%20if%20%22%22%20then%3B%0A%20%20%20%20-%3E%20%22activity%203%22%20as%20a3%3B%0A%20%20else%3B%0A%20%20%20%20if%20%22Other%20test%22%20then%3B%0A%20%20%20%20%20%20-left-%3E%20%22activity%205%22%3B%0A%20%20%20%20else%3B%0A%20%20%20%20%20%20--%3E%20%22activity%206%22%3B%0A%20%20%20%20endif%3B%0A%20%20endif%3B%0Aelse%3B%0A%20%20-%3E%5Bfalse%5D%20%22activity%202%22%3B%0Aendif%3B%0A%0Aa3%20--%3E%20if%20%22last%20test%22%20then%3B%0A%20%20--%3E%20%22activity%207%22%3B%0Aelse%3B%0A%20%20-%3E%20%22activity%208%22%3B%0Aendif%3B%0A%40enduml)
 
 
 <details> 
 <summary></summary>
 
 ```
-    @startuml
-    (*) --> if "Some Test" then
-      -->[true] "activity 1"
-      if "" then
-        -> "activity 3" as a3
-      else
-        if "Other test" then
-          -left-> "activity 5"
-        else
-          --> "activity 6"
-        endif
-      endif  
-    else 
-      ->[false] "activity 2"    
-    endif
-    a3 --> if "last test" then
-      --> "activity 7"
-    else
-      -> "activity 8"
-    endif  
-    @enduml 
+没有;的话，gravizo不能识别。有;的话，PlantUML不能解析
+@startuml;
+(*) --> if "Some Test" then;
+  -->[true] "activity 1";
+  if "" then;
+    -> "activity 3" as a3;
+  else;
+    if "Other test" then;
+      -left-> "activity 5";
+    else;
+      --> "activity 6";
+    endif;
+  endif;
+else;
+  ->[false] "activity 2";
+endif;
+
+a3 --> if "last test" then;
+  --> "activity 7";
+else;
+  -> "activity 8";
+endif;
+@enduml
 
 ```
 </details>
 
 
 
+------
+
+这和上面一样，去掉分号，是把数据存在 github 的 README.md 中
+
+01
+
+![Alt text](https://g.gravizo.com/source/svg/wjmark01?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md  )
+
+<details> 
+<summary></summary>
+
+```
+没有;的话，gravizo不能识别。有;的话，PlantUML不能解析
+wjmark01
+@startuml
+(*) --> if "Some Test" then
+  -->[true] "activity 1"
+  if "" then
+    -> "activity 3" as a3
+  else
+    if "Other test" then
+      -left-> "activity 5"
+    else
+      --> "activity 6"
+    endif
+  endif
+else
+  ->[false] "activity 2"
+endif
+
+a3 --> if "last test" then
+  --> "activity 7"
+else
+  -> "activity 8"
+endif
+@enduml
+wjmark01
+
+```
+</details>
+
 
 ------
+
+
+
 
 这些是把数据存在 github 的 data.uml 中
 
