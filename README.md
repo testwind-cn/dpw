@@ -209,6 +209,11 @@ wjmark01
 
 ![Alt text](https://g.gravizo.com/source/svg/wjmark50?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
 
+
+51
+
+![Alt text](https://g.gravizo.com/source/svg/wjmark51?https%3A%2F%2Fraw.githubusercontent.com%2Ftestwind-cn%2Fdpw%2Fmaster/README.md )
+
 ------
 
 <details> 
@@ -453,7 +458,72 @@ endif
 @enduml
 wjmark50
 
+
+
+
+
+wjmark51
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+
+
+	actor :商户-买方: as Buyer	
+	actor :金融机构-资金方: as Capital
+	actor :平台-卖方: as Saler
+
+
+	rectangle 采购-借款 {
+		usecase (支付首付款15%) as UC1_pay
+		usecase (放款85%+部分首付) as UC3_lend
+		usecase (借款85%) as UC2_borrow
+	}
+
+	usecase (发货) as UC4_Sale
+	
+	rectangle 还款 {
+		usecase (等本分期\n还款85%+罚息) as UC5_Return
+		
+	}
+
+
+
+	
+	Buyer --> (UC1_pay) : S1
+	(UC1_pay) -->  Capital: S2
+	Buyer --> (UC2_borrow) : S3
+	(UC2_borrow) --> Capital  : S4
+	Capital	 --> (UC3_lend) : S5
+	(UC3_lend) --> Saler: S6
+	Saler -> (UC4_Sale): S7
+	(UC4_Sale) --> Buyer: S8
+	Buyer --> (UC5_Return) : S9
+	
+	(UC5_Return)  -->  Capital: S10	
+	
+
+
+
+
+@enduml
+wjmark51
+
 ```
+left to right direction
+
+
+
+@startuml
+:First Actor:
+:Another\nactor: as Men2
+actor Men3
+actor :Last actor: as Men4
+@enduml
+
+
+
+
 
 
 </details>
