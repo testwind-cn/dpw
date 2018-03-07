@@ -475,16 +475,15 @@ skinparam packageStyle rectangle
 
 
 	rectangle 采购-借款 {
-		usecase (支付首付款15%) as UC1_pay
-		usecase (放款85%+部分首付) as UC3_lend
-		usecase (借款85%) as UC2_borrow
+		usecase (支付订单15%首付款) as UC1_pay
+		usecase (按订单金额85%\n申请借款) as UC2_borrow
+		usecase (按订单金额85%放款\n+扣除全部利息的首付款) as UC3_lend		
 	}
 
 	usecase (发货) as UC4_Sale
 	
 	rectangle 还款 {
-		usecase (等本分期\n还款85%+罚息) as UC5_Return
-		
+		usecase (等额本金分期还款、\n（若有）罚息) as UC5_Return
 	}
 
 
@@ -496,10 +495,11 @@ skinparam packageStyle rectangle
 	(UC2_borrow) --> Capital  : S4
 	Capital	 --> (UC3_lend) : S5
 	(UC3_lend) --> Saler: S6
+	
 	Saler -> (UC4_Sale): S7
 	(UC4_Sale) --> Buyer: S8
-	Buyer --> (UC5_Return) : S9
 	
+	Buyer --> (UC5_Return) : S9	
 	(UC5_Return)  -->  Capital: S10	
 	
 
