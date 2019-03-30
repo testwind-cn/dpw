@@ -470,37 +470,55 @@ skinparam packageStyle rectangle
 
 
 	actor :商户-买方: as Buyer	
-	actor :金融机构-资金方: as Capital
 	actor :平台-卖方: as Saler
+	actor :金融机构-资金方: as Capital
+	
 
 
-	rectangle 采购-借款 {
+	rectangle 1.采购-申请借款 {
 		usecase (支付订单15%首付款) as UC1_pay
 		usecase (按订单金额85%\n申请借款) as UC2_borrow
-		usecase (按订单金额85%放款\n+扣除全部利息的首付款) as UC3_lend		
+
+	}
+	
+	rectangle 2.批准放款 {
+		usecase (贷款批准) as UC3_approve
+		usecase (收货确认) as UC4_cofirm
+		usecase (按订单金额85%放款\n+扣除全部利息的首付款) as UC5_lend
+	}
+	
+	usecase (发货) as UC6_Sale
+	
+	
+	rectangle 3.还款 {
+		usecase (分期等额还本金、\n（若有）罚息) as UC7_Return
 	}
 
-	usecase (发货) as UC4_Sale
-	
-	rectangle 还款 {
-		usecase (等额本金分期还款、\n（若有）罚息) as UC5_Return
-	}
-
 
 
 	
-	Buyer --> (UC1_pay) : S1
-	(UC1_pay) -->  Capital: S2
-	Buyer --> (UC2_borrow) : S3
-	(UC2_borrow) --> Capital  : S4
-	Capital	 --> (UC3_lend) : S5
-	(UC3_lend) --> Saler: S6
+	Buyer --> (UC1_pay) : s1
+	Buyer --> (UC2_borrow) : s2
+	(UC1_pay) -->  Capital: s3
+	(UC2_borrow) --> Capital  : s4
+	Capital	 --> (UC3_approve) : s5
+	(UC3_approve) --> Saler : s6
 	
-	Saler -> (UC4_Sale): S7
-	(UC4_Sale) --> Buyer: S8
+	  Saler -> (UC6_Sale): s7
+	 (UC6_Sale) -> Buyer: s8
 	
-	Buyer --> (UC5_Return) : S9	
-	(UC5_Return)  -->  Capital: S10	
+	Buyer --> (UC4_cofirm): s9
+	(UC4_cofirm) --> Capital: s10
+	
+	Capital	 --> (UC5_lend) : s11
+	(UC5_lend) --> Saler: s12
+	
+	
+	
+	
+	
+	Buyer --> (UC7_Return) : s13
+	(UC7_Return)  -->  Capital: s14
 	
 
 
@@ -508,6 +526,62 @@ skinparam packageStyle rectangle
 
 @enduml
 wjmark51
+
+
+wjmark52
+@startuml
+actor “商户-买方” as Foo1
+actor “平台-卖方” as Foo2
+database “金融机构-资金方” as Foo3
+
+autonumber
+== 商户注册  ==
+Foo1 -[#0000FF]> Foo2 : 申请“分期购”补齐商户注册信息
+activate Foo1
+activate Foo2
+Foo2 -[#008000]-> Foo3 : 后台自动为商户开户
+activate Foo3
+Foo3 -[#008000]-> Foo2 : 返回商户开户账号
+deactivate Foo2
+Foo3 -[#008000]-> Foo1 : 短信发送商户通华平台初始密码
+deactivate Foo1
+deactivate Foo3
+
+== 贷款申请  ==
+Foo1 -[#0000FF]> Foo2 : 确认选购商品并使用“分期购”
+activate Foo1
+activate Foo2
+activate Foo3
+Foo2 -[#0000FF]> Foo3 : 发送：商户号、订单号、商品清单、总金额、首付金额
+deactivate Foo2
+Foo3 -[#0000FF]> Foo1 : 展示贷款合同、订单号、商品清单、总金额、首付金额
+Foo1 -[#0000FF]> Foo3 : 确认贷款合同、填写密码或短信验证码、支付首付
+deactivate Foo1
+
+== 贷款批准  ==
+Foo3 -> Foo2 : 确认收到首付，批准贷款
+activate Foo2
+
+Foo3 -[#008000]-> Foo1 : 短信通知商户贷款批准
+activate Foo1
+== 放款  ==
+Foo2 -> Foo1 : 商品发货
+
+Foo1 -> Foo3 : 确认收货
+deactivate Foo1
+Foo3 -> Foo2 : 放款
+deactivate Foo2
+
+Foo3 -[#008000]-> Foo1 : 短信通知商户贷款情况
+activate Foo1
+== 还款  ==
+
+Foo1 -[#0000FF]> Foo3 : 登录商户平台或通华平台还款
+deactivate Foo1
+deactivate Foo3
+
+@enduml
+wjmark52
 
 ```
 left to right direction
